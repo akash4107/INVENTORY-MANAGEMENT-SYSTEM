@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory - Inventory Shop</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Inventory Shop</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <div id="navbar" class="navbar">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="inventory.html">Inventory</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <h2>Manage Inventory</h2>
+
+        <!-- Add Item Form -->
+        <form id="add-item-form">
+            <label for="item-name">Item Name:</label>
+            <input type="text" id="item-name" required>
+
+            <label for="item-quantity">Quantity:</label>
+            <input type="number" id="item-quantity" required min="1">
+
+            <button type="submit">Add Item</button>
+        </form>
+
+        <h3>Current Inventory:</h3>
+        <ul id="inventory-list">
+            <!-- Inventory items will be displayed here -->
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Inventory Shop</p>
+    </footer>
+</body>
+</html>
+
