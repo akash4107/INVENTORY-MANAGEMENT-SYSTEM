@@ -1,34 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Inventory Shop</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+  <meta charset="utf-8" />
+  <title>IMS - Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>Inventory Management System</h1>
-     
-    </header>
-
-    <!-- Navigation Bar -->
-    <div id="navbar" class="navbar">
-        <a href="index.html">Home</a>
-        <a href="login.html">Login</a>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="index.html">IMS</a>
+      <nav>
+        <a href="Inventory.html">Inventory</a>
+        <a href="Login.html">Login</a>
         <a href="register.html">Register</a>
-        <a href="inventory.html">Inventory</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Main Content -->
-    <main>
-        <h2>Welcome to Inventory Management System</h2>
-        <p>Manage your inventory and track your items easily. Please log in or register to start managing your items.</p>
-    </main>
+  <main class="container hero">
+    <h1>Inventory Management System</h1>
+    <p class="lead">A professional, responsive interface to manage inventory built for you.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Products</h3>
+        <p>View, compare, and manage product stock.</p>
+        <a class="btn" href="Inventory.html">Open Inventory</a>
+      </div>
+      <div class="card">
+        <h3>Orders</h3>
+        <p>Place orders and manage sales.</p>
+        <a class="btn" href="Inventory.html">Place Order</a>
+      </div>
+    </div>
+  </main>
 
-    <footer>
-        <p>&copy; 2025 Inventory Shop</p>
-    </footer>
+  <footer class="footer container">
+    <div>© 2025 Akash | IMS</div>
+  </footer>
+
+  <script>
+    // Simple client: health-check the backend
+    (async ()=> {
+      try{
+        const r = await fetch('http://localhost:4000/');
+        if(!r.ok) throw 0;
+        console.log('Backend OK');
+      }catch(e){
+        console.warn('Backend not reachable. Start the backend to enable dynamic features.');
+      }
+    })();
+  </script>
 </body>
 </html>
-
