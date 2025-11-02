@@ -1,42 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Inventory Shop</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+  <meta charset="utf-8" />
+  <title>IMS - Login</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>Inventory Shop</h1>
-    </header>
+  <div class="auth-page container">
+    <form id="loginForm" class="card auth-card">
+      <h2>Sign in</h2>
+      <label>Email</label>
+      <input id="email" type="email" required />
+      <label>Password</label>
+      <input id="password" type="password" required />
+      <button class="btn primary">Login</button>
+      <p class="muted">Don't have account? <a href="register.html">Register</a></p>
+    </form>
+  </div>
 
-    <!-- Navigation Bar -->
-    <div id="navbar" class="navbar">
-        <a href="index.html">Home</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
-        <a href="inventory.html">Inventory</a>
-    </div>
-
-    <!-- Main Content -->
-    <main>
-        <h2>Login</h2>
-
-        <!-- Login Form -->
-        <form id="login-form">
-            <label for="username">Username:</label>
-            <input type="text" id="username" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" required>
-
-            <button type="submit">Login</button>
-        </form>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Inventory Shop</p>
-    </footer>
+  <script>
+    const base = 'http://localhost:4000/api';
+    document.getElementById('loginForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      try{
+        const res = await fetch(base+'/auth/login', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if(!res.ok) throw new Error(data.error || 'Login failed');
+        localStorage.setItem('ims_token', data.token);
+        localStorage.setItem('ims_user', JSON.stringify(data.user));
+        alert('Login success');
+        window.location = 'Inventory.html';
+      }catch(err){
+        alert(err.message || 'Login error');
+      }
+    });
+  </script>
 </body>
 </html>
